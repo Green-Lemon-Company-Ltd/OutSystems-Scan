@@ -2,6 +2,7 @@ from colorama import Fore, Style
 import requests
 import re
 import urllib3
+import outputToJson
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -27,10 +28,25 @@ def get_all_clientvaribles(environment,app_module_name,header):
                 item_content = item.split(", ")
                 if len(item.split(", ")) == 4:
                     print(f"| {Fore.WHITE}[200] {Fore.YELLOW}[WARNING] {item_content}{Style.RESET_ALL}")
+
+                    # ---------- START OF CHANGED CODE ---------- #
+
+                    location = f"{item_content}"
+                    outputToJson.clientVariablesToJson(location)
+
+                    # ---------- END OF CHANGED CODE ---------- #
+
                     if not potential_defaultvalue_found:
                         potential_defaultvalue_found = True
                 else:
                     print(f"| {Fore.WHITE}[200] {Style.DIM}{item_content}{Style.RESET_ALL}")
+
+                    # ---------- START OF CHANGED CODE ---------- #
+
+                    location = f"{item_content}"
+                    outputToJson.clientVariablesToJson(location)
+                    
+                    # ---------- END OF CHANGED CODE ---------- #
     else:
         # Error in request
         print(f"{Fore.RED}{Style.DIM}get_clientvariables.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")

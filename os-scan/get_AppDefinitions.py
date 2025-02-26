@@ -2,6 +2,7 @@ from colorama import Fore, Style
 import requests
 import get_RealAddress
 import urllib3
+import outputToJson
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -38,6 +39,18 @@ def get_app_definitions(environment,app_module_name,header):
         print(f"| {Fore.WHITE}User tenant provider: {Style.DIM}{user_provider}{Style.RESET_ALL}")
         print(f"| {Fore.WHITE}Home module key: {Style.DIM}{home_module_key}{Style.RESET_ALL}")
         print(f"| {Fore.WHITE}Real DNS (enterprise only): {Style.DIM}{get_RealAddress.get_address(environment)}/{app_module_name}{Style.RESET_ALL}")
+
+        # ---------- START OF CHANGED CODE ---------- #
+
+        application = f"[NAME={application_name} KEY={application_key}]"
+        environment = f"[NAME={environment_name} KEY={environment_key}]"
+        userTenantProvider = f"{user_provider}"
+        homeModuleKey = f"{home_module_key}"
+        realDNS = f"{get_RealAddress.get_address(environment)}/{app_module_name}"
+
+        outputToJson.appDefinitionsToJson(url,application,environment,userTenantProvider,homeModuleKey,realDNS)
+
+        # ---------- END OF CHANGED CODE ---------- #
 
         # Return
         return application_name

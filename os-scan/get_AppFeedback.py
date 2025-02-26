@@ -2,6 +2,7 @@ from colorama import Fore, Style
 import requests
 import re
 import urllib3
+import outputToJson
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -40,6 +41,16 @@ def check_ECTModule(environment,app_module_name,header):
                 print(f"| {Fore.RED}[|||] {Style.DIM}[App Feedback] The current version {version_string} of ECT Provider running on the domain is vulnerable to arbitrary code execution!{Style.RESET_ALL}")
                 print(f"| {Fore.RED}[POC] {Style.DIM}[App Feedback] Use the 'nodeXPath' parameter when sending feedback to inject javascript code, for example: 'nodeXPath=;alert();'.{Style.RESET_ALL}")
                 print(f"| {Fore.RED}[|||] {Style.DIM}[App Feedback] READ HOW TO EXPLOIT AND PROTECT against this vulnerability in the security article: https://www.linkedin.com/pulse/outsystems-security-feedback-app-extremely-vulnerable-lucas-soares-fnjge/{Style.RESET_ALL}")
+
+                # ---------- START OF CHANGED CODE ---------- #
+                
+                description = f"The current version {version_string} of ECT Provider running on the domain is vulnerable to arbitrary code execution. Use the 'nodeXPath' parameter when sending feedback to inject javascript code, for example: 'nodeXPath=;alert();"
+                remediation = "https://www.linkedin.com/pulse/outsystems-security-feedback-app-extremely-vulnerable-lucas-soares-fnjge/"
+                location = url_ECTProvider
+                outputToJson.ectModuleToJson(description,remediation,location)
+
+                # ---------- END OF CHANGED CODE ---------- #
+
             else:
                 print(f"| {Fore.WHITE}[|||] {Style.DIM}[App Feedback] The current version {version_string} of ECT Provider is not vulnerable.{Style.RESET_ALL}")
     else:

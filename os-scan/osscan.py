@@ -15,6 +15,7 @@ import get_LoginSample
 import get_SAPInformations
 import get_AppFeedback
 import get_Roles
+import outputToJson
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -106,7 +107,8 @@ def exploit_modules(data,environment,app_module_name):
     print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for ECT Feedback App in the environment...{Style.RESET_ALL}")
     get_AppFeedback.get_EctAppFeedback(environment,app_module_name,header)
 
-    get_EndScope.scan_completed()
+    # get_EndScope.scan_completed()
+    outputToJson.printFindings()
     
 # Sending a GET request to the URL
 response = requests.get(module_informations_url, headers=header, verify=False)

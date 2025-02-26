@@ -2,6 +2,7 @@ from colorama import Fore, Style
 import requests
 import json
 import urllib3
+import outputToJson
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -21,6 +22,12 @@ def get_mobile_apps(environment,header):
                 print(f"| {Fore.WHITE}[404] {Style.DIM}No mobile applications found in the scanned environment.{Style.RESET_ALL}")
             else:
                 print(f"| {Fore.WHITE}[200] {Style.DIM}{response.text}{Style.RESET_ALL}")
+
+                # ---------- START OF CHANGED CODE ---------- #
+
+                outputToJson.mobileAppToJson(response.text)
+
+                # ---------- END OF CHANGED CODE ---------- #
     else:
         # Error in request
         print(f"{Fore.RED}{Style.DIM}get_mobileapp.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")

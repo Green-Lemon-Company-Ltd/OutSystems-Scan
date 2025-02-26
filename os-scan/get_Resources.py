@@ -1,5 +1,6 @@
 from colorama import Fore, Style
 import re
+import outputToJson
 
 # Open wordlist file
 with open("wordlist/Extensions.txt", "r") as file_extensions_wordlist:
@@ -33,6 +34,14 @@ def get_all_resources(data,environment_url):
             if check_extensions(key.lower()):
                 # Print resources files founded
                 print(f"| {Fore.WHITE}[200]{Style.RESET_ALL} {Fore.YELLOW}[WARNING] {environment_url}{key}{Style.RESET_ALL}")
+
+                # ---------- START OF CHANGED CODE ---------- #
+
+                location = f"{environment_url}{key}"
+                outputToJson.allResourcesToJson(location)
+
+                # ---------- END OF CHANGED CODE ---------- #
+
                 if not potential_extensions_found:
                         potential_extensions_found = True
             else:

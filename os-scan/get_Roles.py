@@ -2,6 +2,7 @@ from colorama import Fore, Style
 import requests
 import re
 import urllib3
+import outputToJson
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -20,6 +21,14 @@ def get_roles_os11(response_text):
             roles = items.group(1).split(",")[0].strip().replace(".Not"," --> [Role Name: ").replace("\"","")
             print(f"| {Fore.WHITE}{Style.DIM}Supplier module: {roles}]{Style.RESET_ALL}")
 
+            # ---------- START OF CHANGED CODE ---------- #
+
+            vulnerabilityName = "OS11 Role Enumeration"
+            location = f"Supplier module: {roles}"
+            outputToJson.getOS11RolesToJson(vulnerabilityName,location)
+
+            # ---------- END OF CHANGED CODE ---------- #
+
 def get_roles_odc(response_text):
     pattern = r'^roleException: new OS\.Exceptions\.Exceptions\.NotRegisteredException\(".*'
     
@@ -33,6 +42,14 @@ def get_roles_odc(response_text):
         if items:
             roles = items.group(1).split(",")[0].strip().replace(".Not"," --> [Role Name: ").replace("\"","")
             print(f"| {Fore.WHITE}{Style.DIM}Supplier module: {roles}]{Style.RESET_ALL}")
+
+            # ---------- START OF CHANGED CODE ---------- #
+
+            vulnerabilityName = "ODC Role Enumeration"
+            location = f"Supplier module: {roles}"
+            outputToJson.getODCRolesToJson(vulnerabilityName,location)
+
+            # ---------- END OF CHANGED CODE ---------- #
 
 def get_all_roles(environment,app_module_name,header):
 

@@ -1,6 +1,7 @@
 from colorama import Fore, Style
 import requests
 import urllib3
+import outputToJson
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -23,6 +24,15 @@ def get_SapInformations(environment,header):
         print(f"| {Fore.WHITE}SAP Connector: {Style.DIM}[{is_sap_conect_presente}]{Style.RESET_ALL}")
         print(f"| {Fore.WHITE}SAP Connector Version: {Style.DIM}[{sap_conect_version}]{Style.RESET_ALL}")
         print(f"| {Fore.WHITE}Exposed API documentation: {Style.DIM}[{environment}/SAPDevService/rest/SAP/]{Style.RESET_ALL}")
+
+        # ---------- START OF CHANGED CODE ---------- #
+        
+        description = f"SAP Connector: {is_sap_conect_presente}, SAP Connector Version: {sap_conect_version}"
+        location = f"{environment}/SAPDevService/rest/SAP/"
+        outputToJson.sapInformationToJson(description,location)
+
+        # ---------- END OF CHANGED CODE ---------- #
+
     else:
         # The request failed
         # Printing the response code and error message
