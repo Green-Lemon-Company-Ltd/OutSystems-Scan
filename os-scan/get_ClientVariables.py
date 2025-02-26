@@ -27,7 +27,7 @@ def get_all_clientvaribles(environment,app_module_name,header):
             for item in items:
                 item_content = item.split(", ")
                 if len(item.split(", ")) == 4:
-                    print(f"| {Fore.WHITE}[200] {Fore.YELLOW}[WARNING] {item_content}{Style.RESET_ALL}")
+                    # print(f"| {Fore.WHITE}[200] {Fore.YELLOW}[WARNING] {item_content}{Style.RESET_ALL}")
 
                     # ---------- START OF CHANGED CODE ---------- #
 
@@ -39,7 +39,7 @@ def get_all_clientvaribles(environment,app_module_name,header):
                     if not potential_defaultvalue_found:
                         potential_defaultvalue_found = True
                 else:
-                    print(f"| {Fore.WHITE}[200] {Style.DIM}{item_content}{Style.RESET_ALL}")
+                    # print(f"| {Fore.WHITE}[200] {Style.DIM}{item_content}{Style.RESET_ALL}")
 
                     # ---------- START OF CHANGED CODE ---------- #
 
@@ -47,9 +47,9 @@ def get_all_clientvaribles(environment,app_module_name,header):
                     outputToJson.clientVariablesToJson(location)
                     
                     # ---------- END OF CHANGED CODE ---------- #
-    else:
-        # Error in request
-        print(f"{Fore.RED}{Style.DIM}get_clientvariables.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")
+    # else:
+    #     # Error in request
+    #     print(f"{Fore.RED}{Style.DIM}get_clientvariables.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")
     
-    if potential_defaultvalue_found:
-        print(f"{Fore.RED}[i] Potential default values found in one or more ClientVar listed in{Style.RESET_ALL} {Fore.YELLOW}yellow{Style.RESET_ALL} {Fore.RED}above.{Style.RESET_ALL}")
+    # if potential_defaultvalue_found:
+    #     print(f"{Fore.RED}[i] Potential default values found in one or more ClientVar listed in{Style.RESET_ALL} {Fore.YELLOW}yellow{Style.RESET_ALL} {Fore.RED}above.{Style.RESET_ALL}")

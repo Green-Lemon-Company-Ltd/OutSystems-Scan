@@ -33,7 +33,7 @@ def get_all_pages(data,environment_url):
             if check_screenName(key.lower()):
                 # Print the key in green
                 
-                print(f"| {Fore.WHITE}[200]{Style.RESET_ALL} {Fore.YELLOW}[WARNING] {environment_url}{key}{Style.RESET_ALL}")
+                # print(f"| {Fore.WHITE}[200]{Style.RESET_ALL} {Fore.YELLOW}[WARNING] {environment_url}{key}{Style.RESET_ALL}")
 
                 # ---------- START OF CHANGED CODE ---------- #
                 
@@ -47,7 +47,7 @@ def get_all_pages(data,environment_url):
                     potential_screen_found = True
             else:
                 # Print the key normally
-                print(f"| {Fore.WHITE}[200] {Style.DIM}{environment_url}{key}{Style.RESET_ALL}")
+                # print(f"| {Fore.WHITE}[200] {Style.DIM}{environment_url}{key}{Style.RESET_ALL}")
 
                 # ---------- START OF CHANGED CODE ---------- #
         
@@ -57,6 +57,6 @@ def get_all_pages(data,environment_url):
                 
                 # ---------- END OF CHANGED CODE ---------- #
                 
-    if potential_screen_found:
-        print(f"{Fore.RED}[i] {commons.get_current_datetime()} Potentially vulnerable test screens were found in{Style.RESET_ALL} {Fore.YELLOW}yellow{Style.RESET_ALL} {Fore.RED}above.{Style.RESET_ALL}")
-        print(f"{Fore.RED}[i] {commons.get_current_datetime()} Soon you will be able to use other commands to perform a full page scan.{Style.RESET_ALL}")
+    # if potential_screen_found:
+    #     print(f"{Fore.RED}[i] {commons.get_current_datetime()} Potentially vulnerable test screens were found in{Style.RESET_ALL} {Fore.YELLOW}yellow{Style.RESET_ALL} {Fore.RED}above.{Style.RESET_ALL}")
+    #     print(f"{Fore.RED}[i] {commons.get_current_datetime()} Soon you will be able to use other commands to perform a full page scan.{Style.RESET_ALL}")

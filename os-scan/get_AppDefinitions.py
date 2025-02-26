@@ -34,11 +34,11 @@ def get_app_definitions(environment,app_module_name,header):
         home_module_key = home_module_key_line.split(":")[1].strip().strip('"').strip(',')[:-1]
 
         # Print informations
-        print(f"| {Fore.WHITE}Application: {Style.DIM}[NAME={application_name} KEY={application_key}]{Style.RESET_ALL}")
-        print(f"| {Fore.WHITE}Environment: {Style.DIM}[NAME={environment_name} KEY={environment_key}]{Style.RESET_ALL}")
-        print(f"| {Fore.WHITE}User tenant provider: {Style.DIM}{user_provider}{Style.RESET_ALL}")
-        print(f"| {Fore.WHITE}Home module key: {Style.DIM}{home_module_key}{Style.RESET_ALL}")
-        print(f"| {Fore.WHITE}Real DNS (enterprise only): {Style.DIM}{get_RealAddress.get_address(environment)}/{app_module_name}{Style.RESET_ALL}")
+        # print(f"| {Fore.WHITE}Application: {Style.DIM}[NAME={application_name} KEY={application_key}]{Style.RESET_ALL}")
+        # print(f"| {Fore.WHITE}Environment: {Style.DIM}[NAME={environment_name} KEY={environment_key}]{Style.RESET_ALL}")
+        # print(f"| {Fore.WHITE}User tenant provider: {Style.DIM}{user_provider}{Style.RESET_ALL}")
+        # print(f"| {Fore.WHITE}Home module key: {Style.DIM}{home_module_key}{Style.RESET_ALL}")
+        # print(f"| {Fore.WHITE}Real DNS (enterprise only): {Style.DIM}{get_RealAddress.get_address(environment)}/{app_module_name}{Style.RESET_ALL}")
 
         # ---------- START OF CHANGED CODE ---------- #
 
@@ -54,6 +54,6 @@ def get_app_definitions(environment,app_module_name,header):
 
         # Return
         return application_name
-    else:
-        # Error in request
-        print(f"{Fore.RED}{Style.DIM}get_appdefinitions.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")
+    # else:
+    #     # Error in request
+    #     print(f"{Fore.RED}{Style.DIM}get_appdefinitions.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")

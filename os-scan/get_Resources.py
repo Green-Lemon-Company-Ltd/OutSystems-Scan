@@ -33,7 +33,7 @@ def get_all_resources(data,environment_url):
         if not re.search(keys_not_allowed, key):
             if check_extensions(key.lower()):
                 # Print resources files founded
-                print(f"| {Fore.WHITE}[200]{Style.RESET_ALL} {Fore.YELLOW}[WARNING] {environment_url}{key}{Style.RESET_ALL}")
+                # print(f"| {Fore.WHITE}[200]{Style.RESET_ALL} {Fore.YELLOW}[WARNING] {environment_url}{key}{Style.RESET_ALL}")
 
                 # ---------- START OF CHANGED CODE ---------- #
 
@@ -44,8 +44,8 @@ def get_all_resources(data,environment_url):
 
                 if not potential_extensions_found:
                         potential_extensions_found = True
-            else:
-                print(f"| {Fore.WHITE}[200] {Style.DIM}{environment_url}{key}{Style.RESET_ALL}")
-    if potential_extensions_found:
-        print(f"{Fore.RED}[i] Potential exploitable file found and listed in{Style.RESET_ALL} {Fore.YELLOW}yellow{Style.RESET_ALL} {Fore.RED}above.{Style.RESET_ALL}")
+    #         else:
+    #             print(f"| {Fore.WHITE}[200] {Style.DIM}{environment_url}{key}{Style.RESET_ALL}")
+    # if potential_extensions_found:
+    #     print(f"{Fore.RED}[i] Potential exploitable file found and listed in{Style.RESET_ALL} {Fore.YELLOW}yellow{Style.RESET_ALL} {Fore.RED}above.{Style.RESET_ALL}")
                 

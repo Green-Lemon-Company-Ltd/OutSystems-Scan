@@ -58,53 +58,53 @@ application = app_module_name
 module_informations_url = url_domain+'/'+app_module_name+'/'+module_services+module_services_info
 
 # Tool art
-print("""\
-   ____   _____       _____                 
-  / __ \ / ____|     / ____|                
- | |  | | (___ _____| (___   ___ __ _ _ __  
- | |  | |\___ \______\___ \ / __/ _` | '_ \ 
- | |__| |____) |     ____) | (_| (_| | | | |
-  \____/|_____/     |_____/ \___\__,_|_| |_|
+# print("""\
+#    ____   _____       _____                 
+#   / __ \ / ____|     / ____|                
+#  | |  | | (___ _____| (___   ___ __ _ _ __  
+#  | |  | |\___ \______\___ \ / __/ _` | '_ \ 
+#  | |__| |____) |     ____) | (_| (_| | | | |
+#   \____/|_____/     |_____/ \___\__,_|_| |_|
                                                          
-""")
-print(f"  Developed by {Fore.RED}LUCAS 5O4R3S{Style.RESET_ALL} to exploit OutSystems developers' technical debt and known vulnerabilities. | For contact https://soarescorp.com/")
-print(f"  {Fore.WHITE}{Style.DIM}Do not run this tool in environments where you are not authorized, you are responsible for your actions. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.{Style.RESET_ALL}")
-print(f"\n")
-print(f"{Fore.WHITE}[i] {commons.get_current_datetime()} The analysis is starting...{Style.RESET_ALL}")
+# """)
+# print(f"  Developed by {Fore.RED}LUCAS 5O4R3S{Style.RESET_ALL} to exploit OutSystems developers' technical debt and known vulnerabilities. | For contact https://soarescorp.com/")
+# print(f"  {Fore.WHITE}{Style.DIM}Do not run this tool in environments where you are not authorized, you are responsible for your actions. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program.{Style.RESET_ALL}")
+# print(f"\n")
+# print(f"{Fore.WHITE}[i] {commons.get_current_datetime()} The analysis is starting...{Style.RESET_ALL}")
 
 header = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.5359.125 Safari/537.36"
 }
 
 def exploit_modules(data,environment,app_module_name):
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for module informations...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for module informations...{Style.RESET_ALL}")
     get_AppDefinitions.get_app_definitions(environment,app_module_name,header)
 
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for mobile applications in the environment...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for mobile applications in the environment...{Style.RESET_ALL}")
     get_MobileApp.get_mobile_apps(environment,header)
-    
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for available screens in the application...{Style.RESET_ALL}")
+ 
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for available screens in the application...{Style.RESET_ALL}")
     get_Screens.get_all_pages(data,environment)
     
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for dependencies in the application...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for dependencies in the application...{Style.RESET_ALL}")
     get_ModulesReferences.get_module_references(environment,app_module_name,header)
     
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for public files or in the resources folder...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for public files or in the resources folder...{Style.RESET_ALL}")
     get_Resources.get_all_resources(data,environment)
     
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for ClientVariables in the application...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for ClientVariables in the application...{Style.RESET_ALL}")
     get_ClientVariables.get_all_clientvaribles(environment,app_module_name,header)
 
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for roles used in the application...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for roles used in the application...{Style.RESET_ALL}")
     get_Roles.get_all_roles(environment,app_module_name,header)
     
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for Sample Login Pages in the application...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for Sample Login Pages in the application...{Style.RESET_ALL}")
     get_LoginSample.get_LoginScreens(environment,header)
 
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for SAP informations in the application...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for SAP informations in the application...{Style.RESET_ALL}")
     get_SAPInformations.get_SapInformations(environment,header)
 
-    print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for ECT Feedback App in the environment...{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}{Style.BRIGHT}[i] {commons.get_current_datetime()} Searching for ECT Feedback App in the environment...{Style.RESET_ALL}")
     get_AppFeedback.get_EctAppFeedback(environment,app_module_name,header)
 
     # get_EndScope.scan_completed()
@@ -120,7 +120,7 @@ if response.status_code == 200:
     data = response.json()
 
     # Application is online
-    print(f"{Fore.WHITE}[i] {commons.get_current_datetime()} The '{app_module_name}' module is online.{Style.RESET_ALL}")
+    # print(f"{Fore.WHITE}[i] {commons.get_current_datetime()} The '{app_module_name}' module is online.{Style.RESET_ALL}")
 
     # Calling modules
     exploit_modules(data,environment,app_module_name)
@@ -133,7 +133,7 @@ else:
 
     # Printing the response code and error message
     # Print the key normally
-    print(f"{Fore.RED}{Style.RESET_ALL}")
-    print(f"{Fore.RED}*****************************************************************{Style.RESET_ALL}")
-    print(f"{Fore.RED}There was a problem trying to access the url, more details below:{Style.RESET_ALL}")
-    print(f"{Fore.RED}{Style.DIM}osscan.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")
+    # print(f"{Fore.RED}{Style.RESET_ALL}")
+    # print(f"{Fore.RED}*****************************************************************{Style.RESET_ALL}")
+    # print(f"{Fore.RED}There was a problem trying to access the url, more details below:{Style.RESET_ALL}")
+    # print(f"{Fore.RED}{Style.DIM}osscan.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")

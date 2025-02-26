@@ -22,7 +22,7 @@ def check_compromised_component(component_name,environment,app_module_name,heade
     # Accessing list elements
     for item in compromised_component_list:
         if item["name"].lower() == component_name.lower():
-            print(f"| {Fore.WHITE}[200]{Style.RESET_ALL} {Fore.YELLOW}[{item['name']}] [WARNING] {item['description']}{Style.RESET_ALL}")
+            # print(f"| {Fore.WHITE}[200]{Style.RESET_ALL} {Fore.YELLOW}[{item['name']}] [WARNING] {item['description']}{Style.RESET_ALL}")
             # Verify CKEditor componente
             if item["name"].lower() == "ckeditorreactive":
                 check_CKEditor.call_CKEditor_exploits(environment,app_module_name,header,"CKEditorReactive")
@@ -65,10 +65,10 @@ def get_module_references(environment,app_module_name,header):
             result = check_compromised_component(module_name_filtered,environment,app_module_name,header)
 
             # Print informations
-            if not result:
+            # if not result:
                 # Print informations without warnings
-                print(f"| {Fore.WHITE}[200] {Style.DIM}{module_name_filtered}{Style.RESET_ALL}")
+    #             print(f"| {Fore.WHITE}[200] {Style.DIM}{module_name_filtered}{Style.RESET_ALL}")
             
-    else:
-        # Error in request
-        print(f"{Fore.RED}{Style.DIM}get_modulesreferences.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")
+    # else:
+    #     # Error in request
+    #     print(f"{Fore.RED}{Style.DIM}get_modulesreferences.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")

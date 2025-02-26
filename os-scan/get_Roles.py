@@ -19,7 +19,7 @@ def get_roles_os11(response_text):
 
         if items:
             roles = items.group(1).split(",")[0].strip().replace(".Not"," --> [Role Name: ").replace("\"","")
-            print(f"| {Fore.WHITE}{Style.DIM}Supplier module: {roles}]{Style.RESET_ALL}")
+            # print(f"| {Fore.WHITE}{Style.DIM}Supplier module: {roles}]{Style.RESET_ALL}")
 
             # ---------- START OF CHANGED CODE ---------- #
 
@@ -41,7 +41,7 @@ def get_roles_odc(response_text):
 
         if items:
             roles = items.group(1).split(",")[0].strip().replace(".Not"," --> [Role Name: ").replace("\"","")
-            print(f"| {Fore.WHITE}{Style.DIM}Supplier module: {roles}]{Style.RESET_ALL}")
+            # print(f"| {Fore.WHITE}{Style.DIM}Supplier module: {roles}]{Style.RESET_ALL}")
 
             # ---------- START OF CHANGED CODE ---------- #
 
@@ -67,8 +67,8 @@ def get_all_roles(environment,app_module_name,header):
         # Verify roles in OS11
         elif  "get roles()" in response.text:
             get_roles_odc(response.text)
-        else:
-            print(f"| {Fore.WHITE}[|||] {Style.DIM}Unable to find roles for this application.{Style.RESET_ALL}")
-    else:
+        # else:
+            # print(f"| {Fore.WHITE}[|||] {Style.DIM}Unable to find roles for this application.{Style.RESET_ALL}")
+    # else:
         # Error in request
-        print(f"{Fore.RED}{Style.DIM}get_Roles.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")
+        # print(f"{Fore.RED}{Style.DIM}get_Roles.py - Erro: {response.status_code} - {response.reason}{Style.RESET_ALL}")
