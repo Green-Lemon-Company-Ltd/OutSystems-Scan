@@ -182,7 +182,7 @@ def sapInformationToJson(description,location):
 
 def ectModuleToJson(description,remediation,location):
     add_finding(
-        "ECT Provider Remote Code Execution Vulnerability",
+        "ECT Provider Remote Code Execution",
         "Critical",
         description,
         remediation,
